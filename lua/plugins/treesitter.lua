@@ -2,23 +2,30 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",  -- Use stable branch with old API
+    lazy = false, -- treesitter should not be lazy-loaded
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-
-    -- makes commands always available
-    cmd = {
-      "TSInstall", "TSUpdate", "TSUpdateSync", "TSUninstall",
-      "TSInstallInfo", "TSModuleInfo",
-      "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable",
-    },
 
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "lua", "vim", "vimdoc", "python", "javascript", "typescript", "tsx" },
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
+      -- Install parsers
+      require("nvim-treesitter").install({
+        "lua", "vim", "vimdoc", "python", "javascript", "typescript", "tsx"
+      })
+
+      -- Enable treesitter highlighting for common filetypes
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "lua", "vim", "python", "javascript", "typescript", "typescriptreact", "javascriptreact" },
+        callback = function()
+          vim.treesitter.start()
+        end,
+      })
+
+      -- Enable treesitter-based folding
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "lua", "vim", "python", "javascript", "typescript", "typescriptreact", "javascriptreact" },
+        callback = function()
+          vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.wo[0][0].foldmethod = "expr"
+        end,
       })
     end,
   },
