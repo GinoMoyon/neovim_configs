@@ -14,10 +14,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  require("plugins.colorscheme"),  -- Load colorscheme first
   require("plugins.telescope"),
   require("plugins.whichkey"),
   require("plugins.treesitter"),
   require("plugins.mini_ai"),
   require("plugins.treesitter_textobjects"),
+}, {
+  -- Lazy.nvim UI configuration
+  ui = {
+    border = "rounded",  -- Show borders: "none", "single", "double", "rounded", "solid", "shadow"
+  },
 })
 
