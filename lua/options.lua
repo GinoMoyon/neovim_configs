@@ -2,11 +2,11 @@
 
 -- Line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false  -- Absolute line numbers only
 
 -- Sensible defaults
 vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"  -- Disabled: we manage clipboard manually via keymaps
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
