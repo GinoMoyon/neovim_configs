@@ -14,12 +14,35 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- Core
   require("plugins.colorscheme"),  -- Load colorscheme first
-  require("plugins.telescope"),
-  require("plugins.whichkey"),
-  require("plugins.treesitter"),
-  require("plugins.mini_ai"),
-  require("plugins.treesitter_textobjects"),
+
+  -- LSP & Completion
+  require("plugins.lsp"),          -- Language servers (TypeScript, etc.)
+  require("plugins.cmp"),          -- Auto-completion
+
+  -- Formatting & Linting
+  require("plugins.conform"),      -- Auto-formatting
+
+  -- Git Integration
+  require("plugins.gitsigns"),     -- Git signs in gutter
+  require("plugins.lazygit"),      -- Git UI
+
+  -- File Navigation
+  require("plugins.telescope"),    -- Fuzzy finder
+  require("plugins.neo-tree"),     -- File explorer
+
+  -- Editing
+  require("plugins.treesitter"),   -- Syntax highlighting
+  require("plugins.treesitter_textobjects"),  -- Text objects
+  require("plugins.mini_ai"),      -- Additional text objects
+  require("plugins.autopairs"),    -- Auto-close brackets
+  require("plugins.comment"),      -- Toggle comments
+
+  -- UI
+  require("plugins.lualine"),      -- Status line
+  require("plugins.trouble"),      -- Diagnostics panel
+  require("plugins.whichkey"),     -- Keybinding hints
 }, {
   -- Lazy.nvim UI configuration
   ui = {
