@@ -21,3 +21,7 @@ vim.opt.shiftwidth = 2
 vim.opt.updatetime = 300
 vim.opt.timeoutlen = 500
 
+-- Folding (indent-based, all start open)
+vim.opt.foldmethod = "indent"  -- Create folds based on indentation (functions, classes, etc.)
+vim.opt.foldlevelstart = 99    -- Start with all folds open (manually close when needed)
+

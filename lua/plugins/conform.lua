@@ -29,13 +29,6 @@ return {
           timeout_ms = 1000,  -- Increased from 500ms for larger files
           lsp_fallback = true,  -- Use LSP formatter if conform formatter not available
         },
-
-        -- Customize formatters (optional)
-        formatters = {
-          prettier = {
-            prepend_args = { "--tab-width", "2" },
-          },
-        },
       })
 
       -- Manual format keymap

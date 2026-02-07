@@ -19,15 +19,15 @@ return {
         end,
       })
 
-      -- Enable treesitter-based folding
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "lua", "vim", "python", "javascript", "typescript", "typescriptreact", "javascriptreact" },
-        callback = function()
-          vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-          vim.wo[0][0].foldmethod = "expr"
-          vim.wo[0][0].foldlevel = 99  -- Start with all folds open
-        end,
-      })
+      -- Treesitter-based folding disabled due to errors
+      -- vim.api.nvim_create_autocmd("FileType", {
+      --   pattern = { "lua", "vim", "python", "javascript", "typescript", "typescriptreact", "javascriptreact" },
+      --   callback = function()
+      --     vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      --     vim.wo[0][0].foldmethod = "expr"
+      --     vim.wo[0][0].foldlevel = 99  -- Start with all folds open
+      --   end,
+      -- })
     end,
   },
 }
